@@ -51,6 +51,24 @@ void Inroder(Node *p)
         Inroder(p->rchild);
     }
 }
+void Preroder(Node *p)
+{
+    if (p)
+    {
+        cout << p->data << " ";
+        Inroder(p->lchild);
+        Inroder(p->rchild);
+    }
+}
+void Postroder(Node *p)
+{
+    if (p)
+    {
+        Inroder(p->lchild);
+        Inroder(p->rchild);
+        cout << p->data << " ";
+    }
+}
 vector<vector<int>> LevelOrder(Node*p)
 {
     //w erequire a queue data statructue or a vector of vector
@@ -186,6 +204,10 @@ int main()
 
     Delete(root, 5);
     Inroder(root);
+    cout<<endl;
+    Preroder(root);
+    cout<<endl;
+    Postroder(root);
     cout << endl;
 
     // t = Search(20);

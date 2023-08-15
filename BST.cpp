@@ -1,4 +1,5 @@
-#include <iostream>
+
+#include<bits/stdc++.h>
 using namespace std;
 
 class Node
@@ -49,6 +50,33 @@ void Inroder(Node *p)
         cout << p->data << " ";
         Inroder(p->rchild);
     }
+}
+vector<vector<int>> LevelOrder(Node*p)
+{
+    //w erequire a queue data statructue or a vector of vector
+    vector<vector<int>>ans;
+    if(root == NULL)
+    return ans;
+
+    queue<Node*>q;
+    q.push(root);
+
+    while(!q.empty())
+    {
+        int size = q.size();
+        vector<int>level;
+        for(int i = 0; i<size;i++)
+        {
+            Node*node = q.front();
+            q.pop();
+            if(node->lchild !=NULL) q.push(node->lchild);
+            if(node->rchild !=NULL) q.push(node->rchild);
+
+            level.push_back(node->data);
+        }
+        ans.push_back(level);
+    }
+    return ans;
 }
 Node *Search(int key)
 {
@@ -108,7 +136,6 @@ Node *InSucc(Node *p)
     p = p->lchild;
 
     return p;
-    re
 }
 Node *Delete(Node *p, int key)
 {

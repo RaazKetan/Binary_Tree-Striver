@@ -132,6 +132,7 @@ Node *RInsert(Node *p, int key)
 
 int Height(Node *p)
 {
+    // we dont use level order because it quires a queue and generraly the hegihts are less so we use recusrion
     int x,y;
     if(p == NULL)
     return 0;
@@ -203,13 +204,14 @@ int main()
     root = RInsert(root, 50);
 
     Delete(root, 5);
-    Inroder(root);
-    cout<<endl;
-    Preroder(root);
-    cout<<endl;
-    Postroder(root);
-    cout << endl;
-
+    // Inroder(root);
+    // cout<<endl;
+    // Preroder(root);
+    // cout<<endl;
+    // Postroder(root);
+    // cout << endl;
+ int h = Height(root);
+ cout<<h;
     // t = Search(20);
     // if(t!=NULL)
     // cout<<"Element 20 iss found";

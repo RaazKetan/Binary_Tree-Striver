@@ -1,31 +1,21 @@
-
 //{ Driver Code Starts
-//Initial Template for C++
-
-
 #include <bits/stdc++.h>
 using namespace std;
 
-
-// Tree Node
+/* A binary tree node has data, pointer to left child
+   and a pointer to right child */
 struct Node {
     int data;
-    Node* left;
-    Node* right;
+    struct Node* left;
+    struct Node* right;
 };
-
-// Utility function to create a new Tree Node
 Node* newNode(int val) {
     Node* temp = new Node;
     temp->data = val;
     temp->left = NULL;
     temp->right = NULL;
-
     return temp;
 }
-
-
-// Function to Build Tree
 Node* buildTree(string str) {
     // Corner Case
     if (str.length() == 0 || str[0] == 'N') return NULL;
@@ -84,69 +74,56 @@ Node* buildTree(string str) {
 
     return root;
 }
- 
- // for every node the diffrence of left subtree and right subtree should be less than equal to 1
 
-class Solution{
-    public:
 
-    bool isBalanced(Node *root)
-    {
-       
-       return dfs(root) != -1;
-    //    This take more space o(N*N) so to optimise this we have to under stand how the height odf the tree works
-    //    int x = isBalanced(root->left);
-    //    int y = isBalanced(root->right);
-       
-    //    if(abs(x-y) > 1)
-    //    return false;
-       
-    //    bool left = isBalanced(root->left);
-    //    bool right = isBalanced(root->right);
-       
-    //    if(left || right)
-    //    return false;
-       
-    //    return true;
+// } Driver Code Ends
+/* Tree node structure  used in the program
+
+struct Node
+{
+    int data;
+    struct Node* left;
+    struct Node* right;
+
+    Node(int x){
+        data = x;
+        left = right = NULL;
     }
-    int dfs(Node*root)
+}; */
+
+class Solution {
+  public:
+    // Function to return the diameter of a Binary Tree.
+    int diameter(Node* root) {
+       int dia= 0;
+        height(root,dia);
+        return dia;
+    }
+    int height(Node* root, int &dia)
     {
-        if(root == NULL)
+        if(root==NULL)
         return 0;
 
-        int lh = dfs(root->left);
-        if(lh == -1)
-        return -1;
-        int rh = dfs(root->right);
-        if(rh == -1)
-        return -1;
+        int lh = height(root->left, dia);
+        int rh = height(root->right, dia);
+        dia = max(dia, lh+rh+1);
 
-        if(abs(lh-rh)>1)
-        return -1;
-
-        return max(lh,rh)+1;
+        return 1+max(lh,rh);
     }
 };
-
 
 //{ Driver Code Starts.
 
 /* Driver program to test size function*/
-
-  
-
 int main() {
-
-   
     int t;
-    scanf("%d ", &t);
+    scanf("%d\n", &t);
     while (t--) {
-        string s, ch;
+        string s;
         getline(cin, s);
-        
         Node* root = buildTree(s);
         Solution ob;
-        cout << ob.isBalanced(root) << endl;
+        cout << ob.diameter(root) << endl;
     }
     return 0;
 }

@@ -138,7 +138,7 @@ int Height(Node *p)
     return 0;
     x= Height(p->lchild);
     y= Height(p->rchild);
-    return x+y+1;
+    return max(x,y)+1;
 
 }
 

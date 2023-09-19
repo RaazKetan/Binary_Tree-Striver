@@ -1,0 +1,1 @@
+{"name":"Local: Burn_tree","url":"d:\\Code\\C++\\DSA\\BST\\Burn_tree.cpp","tests":[{"id":1695127443679,"input":"1 2 3 4 5 N 6 N N 7 8 N 9 10 11 N N N 12 N N N 13\n8","output":"7"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\C++\\DSA\\BST\\Burn_tree.cpp","group":"local","local":true}
